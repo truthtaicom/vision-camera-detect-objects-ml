@@ -1,7 +1,7 @@
 import Vision
 import AVFoundation
 import MLKitVision
-import MLKitObjectDetection
+import MLKitObjectDetectionCustom
 
 @objc(DetectObjectsMLPlugin)
 public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
@@ -31,18 +31,54 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
             return nil
           }
 
+          let localModelFilePath = Bundle.main.path(
+            forResource: "lite-model_yolo-v5-tflite_tflite_model_1",
+            ofType: "tflite"
+          )
+
+          let localModel = LocalModel(path: localModelFilePath)
+
           let visionImage = VisionImage(buffer: frame.buffer)
 
           // TODO: Get camera orientation state
           visionImage.orientation = .up
 
           var objects: [Object]
+          var elementArray: [[String: Any]] = []
+
           do {
-              let options = ObjectDetectorOptions()
-              options.detectorMode = .stream
-              options.shouldEnableMultipleObjects = true
+              let options = CustomObjectDetectorOptions(localModel: localModel)
+              options.detectorMode = .singleImage
               options.shouldEnableClassification = true
+              options.shouldEnableMultipleObjects = true
+              options.classificationConfidenceThreshold = NSNumber(value: 0.5)
+              options.maxPerObjectLabelCount = 3
+
               objects = try ObjectDetector.objectDetector(options: options).results(in: visionImage)
+
+              print(objects, "objectsobjects")
+
+              for object in objects {
+                  let frame = object.frame
+                  let trackingID = object.trackingID
+
+                  print("trackingID", trackingID)
+                  print("getFrame(frame)", getFrame(frame))
+
+                  // If classification was enabled:
+                  let description = object.labels.enumerated().map { (index, label) in
+                      "Label \(index): \(label.text), \(label.confidence)"
+                      }.joined(separator:"\n")
+
+
+                  elementArray.append([
+                      "description": description,
+                      "trackingID": trackingID,
+                      "frame": getFrame(frame),
+                      "labels": object.labels,
+                  ])
+              }
+
           } catch let error {
             print("Failed to recognize text with error: \(error.localizedDescription).")
             return nil
@@ -52,28 +88,6 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
             print("Object detector returned no results.")
           }
 
-           var elementArray: [[String: Any]] = []
-
-          for object in objects {
-              let frame = object.frame
-              let trackingID = object.trackingID
-
-              print("trackingID", trackingID)
-              print("getFrame(frame)", getFrame(frame))
-
-              // If classification was enabled:
-              let description = object.labels.enumerated().map { (index, label) in
-                  "Label \(index): \(label.text), \(label.confidence)"
-                  }.joined(separator:"\n")
-
-
-              elementArray.append([
-                  "description": description,
-                  "trackingID": trackingID,
-                  "frame": getFrame(frame),
-                  "labels": object.labels,
-              ])
-          }
 
            return elementArray
 

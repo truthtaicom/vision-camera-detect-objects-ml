@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16E1692597A39063A6B80DA4 /* DetectObjectsML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BF8EB90D66D4CCB7ED6A3 /* DetectObjectsML.swift */; };
+		330B719A2914209F0008D348 /* lite-model_yolo-v5-tflite_tflite_model_1.tflite in CopyFiles */ = {isa = PBXBuildFile; fileRef = 330B7199291420900008D348 /* lite-model_yolo-v5-tflite_tflite_model_1.tflite */; };
 		DC2DED712AFFCD737AD7620E /* DetectObjectsML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F87CC8B3BDDCC72055E40D7 /* DetectObjectsML.m */; };
 		F4FF95D7245B92E800C19C63 /* VisionCameraDetectObjectsMl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* VisionCameraDetectObjectsMl.swift */; };
 /* End PBXBuildFile section */
@@ -19,6 +20,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				330B719A2914209F0008D348 /* lite-model_yolo-v5-tflite_tflite_model_1.tflite in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27,6 +29,7 @@
 /* Begin PBXFileReference section */
 		128BF8EB90D66D4CCB7ED6A3 /* DetectObjectsML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DetectObjectsML.swift; path = DetectObjectsML/DetectObjectsML.swift; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libVisionCameraDetectObjectsMl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVisionCameraDetectObjectsMl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		330B7199291420900008D348 /* lite-model_yolo-v5-tflite_tflite_model_1.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = "lite-model_yolo-v5-tflite_tflite_model_1.tflite"; path = "../../../../Downloads/lite-model_yolo-v5-tflite_tflite_model_1.tflite"; sourceTree = "<group>"; };
 		7F87CC8B3BDDCC72055E40D7 /* DetectObjectsML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DetectObjectsML.m; path = DetectObjectsML/DetectObjectsML.m; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* VisionCameraDetectObjectsMl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionCameraDetectObjectsMl.m; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* VisionCameraDetectObjectsMl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionCameraDetectObjectsMl-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				330B7199291420900008D348 /* lite-model_yolo-v5-tflite_tflite_model_1.tflite */,
 				F4FF95D6245B92E800C19C63 /* VisionCameraDetectObjectsMl.swift */,
 				B3E7B5891CC2AC0600A0062D /* VisionCameraDetectObjectsMl.m */,
 				F4FF95D5245B92E700C19C63 /* VisionCameraDetectObjectsMl-Bridging-Header.h */,
