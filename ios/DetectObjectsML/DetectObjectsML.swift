@@ -38,7 +38,7 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
 
           var objects: [Object]
           do {
-              var options = ObjectDetectorOptions()
+              let options = ObjectDetectorOptions()
               options.detectorMode = .singleImage
               options.shouldEnableMultipleObjects = true
               options.shouldEnableClassification = true
