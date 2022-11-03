@@ -39,7 +39,7 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
           var objects: [Object]
           do {
               let options = ObjectDetectorOptions()
-              options.detectorMode = .singleImage
+              options.detectorMode = .stream
               options.shouldEnableMultipleObjects = true
               options.shouldEnableClassification = true
               objects = try ObjectDetector.objectDetector(options: options).results(in: visionImage)
@@ -48,12 +48,18 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
             return nil
           }
 
+          if (!objects.isEmpty) {
+            print("Object detector returned no results.")
+          }
 
-          var elementArray: [[String: Any]] = []
+           var elementArray: [[String: Any]] = []
 
           for object in objects {
               let frame = object.frame
               let trackingID = object.trackingID
+
+              print("trackingID", trackingID)
+              print("getFrame(frame)", getFrame(frame))
 
               // If classification was enabled:
               let description = object.labels.enumerated().map { (index, label) in
@@ -63,11 +69,14 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
 
               elementArray.append([
                   "description": description,
-                  "trackingID": object.trackingID,
+                  "trackingID": trackingID,
                   "frame": getFrame(frame),
+                  "labels": object.labels,
               ])
           }
 
-          return elementArray
+           return elementArray
+
+//          return objects
       }
 }
