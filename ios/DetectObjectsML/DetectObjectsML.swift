@@ -1,7 +1,7 @@
 import Vision
 import AVFoundation
 import MLKitVision
-import MLKitTextRecognition
+import MLKitObjectDetection
 
 @objc(DetectObjectsMLPlugin)
 public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
