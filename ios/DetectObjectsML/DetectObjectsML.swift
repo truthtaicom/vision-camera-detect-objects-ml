@@ -6,23 +6,23 @@ import MLKitCommon
 
 @objc(DetectObjectsMLPlugin)
 public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
-      private static func getFrame(_ frameRect: CGRect) -> [String: CGFloat] {
-
-          let offsetX = (frameRect.midX - ceil(frameRect.width)) / 2.0
-          let offsetY = (frameRect.midY - ceil(frameRect.height)) / 2.0
-
-          let x = frameRect.maxX + offsetX
-          let y = frameRect.minY + offsetY
-
-          return [
-            "x": frameRect.midX + (frameRect.midX - x),
-            "y": frameRect.midY + (y - frameRect.midY),
-            "width": frameRect.width,
-            "height": frameRect.height,
-            "boundingCenterX": frameRect.midX,
-            "boundingCenterY": frameRect.midY
-          ]
-      }
+//      private static func getFrame(_ frameRect: CGRect) -> [String: CGFloat] {
+//
+//          let offsetX = (frameRect.midX - ceil(frameRect.width)) / 2.0
+//          let offsetY = (frameRect.midY - ceil(frameRect.height)) / 2.0
+//
+//          let x = frameRect.maxX + offsetX
+//          let y = frameRect.minY + offsetY
+//
+//          return [
+//            "x": frameRect.midX + (frameRect.midX - x),
+//            "y": frameRect.midY + (y - frameRect.midY),
+//            "width": frameRect.width,
+//            "height": frameRect.height,
+//            "boundingCenterX": frameRect.midX,
+//            "boundingCenterY": frameRect.midY
+//          ]
+//      }
 
       @objc
       public static func callback(_ frame: Frame!, withArgs _: [Any]!) -> Any! {
@@ -33,7 +33,7 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
           }
 
           let localModelFilePath = Bundle.main.path(
-            forResource: "lite-model_yolo-v5-tflite_tflite_model_1",
+            forResource: "lite-model",
             ofType: "tflite"
           )
 
@@ -63,8 +63,8 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
                   let frame = object.frame
                   let trackingID = object.trackingID
 
-                  print("trackingID", trackingID)
-                  print("getFrame(frame)", getFrame(frame))
+                  print("trackingID", trackingID as Any)
+                  print("frame", frame)
 
                   // If classification was enabled:
                   let description = object.labels.enumerated().map { (index, label) in
@@ -74,8 +74,8 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
 
                   elementArray.append([
                       "description": description,
-                      "trackingID": trackingID,
-                      "frame": getFrame(frame),
+                      "trackingID": trackingID as Any,
+                      "frame": frame,
                       "labels": object.labels,
                   ])
               }
