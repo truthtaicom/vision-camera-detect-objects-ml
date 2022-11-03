@@ -2,6 +2,7 @@ import Vision
 import AVFoundation
 import MLKitVision
 import MLKitObjectDetectionCustom
+import MLKitCommon
 
 @objc(DetectObjectsMLPlugin)
 public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
@@ -36,7 +37,7 @@ public class DetectObjectsMLPlugin: NSObject, FrameProcessorPluginBase {
             ofType: "tflite"
           )
 
-          let localModel = LocalModel(path: localModelFilePath)
+          let localModel = LocalModel(path: localModelFilePath!)
 
           let visionImage = VisionImage(buffer: frame.buffer)
 
