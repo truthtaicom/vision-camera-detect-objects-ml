@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E555C0D2413F4C50049A1A2 /* VisionCameraDetectObjectsMl.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* VisionCameraDetectObjectsMl.m */; };
-		F4FF95D7245B92E800C19C63 /*  VisionCameraDetectObjectsMl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /*  VisionCameraDetectObjectsMl.swift */; };
+		16E1692597A39063A6B80DA4 /* DetectObjectsML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BF8EB90D66D4CCB7ED6A3 /* DetectObjectsML.swift */; };
+		DC2DED712AFFCD737AD7620E /* DetectObjectsML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F87CC8B3BDDCC72055E40D7 /* DetectObjectsML.m */; };
+		F4FF95D7245B92E800C19C63 /* VisionCameraDetectObjectsMl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* VisionCameraDetectObjectsMl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +25,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		128BF8EB90D66D4CCB7ED6A3 /* DetectObjectsML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DetectObjectsML.swift; path = DetectObjectsML/DetectObjectsML.swift; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libVisionCameraDetectObjectsMl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVisionCameraDetectObjectsMl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F87CC8B3BDDCC72055E40D7 /* DetectObjectsML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DetectObjectsML.m; path = DetectObjectsML/DetectObjectsML.m; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* VisionCameraDetectObjectsMl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionCameraDetectObjectsMl.m; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* VisionCameraDetectObjectsMl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionCameraDetectObjectsMl-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4FF95D6245B92E800C19C63 /* VisionCameraDetectObjectsMl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionCameraDetectObjectsMl.swift; sourceTree = "<group>"; };
@@ -56,7 +59,17 @@
 				B3E7B5891CC2AC0600A0062D /* VisionCameraDetectObjectsMl.m */,
 				F4FF95D5245B92E700C19C63 /* VisionCameraDetectObjectsMl-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				C55DDBE318955DF352847E21 /* DetectObjectsML */,
 			);
+			sourceTree = "<group>";
+		};
+		C55DDBE318955DF352847E21 /* DetectObjectsML */ = {
+			isa = PBXGroup;
+			children = (
+				7F87CC8B3BDDCC72055E40D7 /* DetectObjectsML.m */,
+				128BF8EB90D66D4CCB7ED6A3 /* DetectObjectsML.swift */,
+			);
+			name = DetectObjectsML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,7 +130,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FF95D7245B92E800C19C63 /* VisionCameraDetectObjectsMl.swift in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* VisionCameraDetectObjectsMl.m in Sources */,
+				DC2DED712AFFCD737AD7620E /* DetectObjectsML.m in Sources */,
+				16E1692597A39063A6B80DA4 /* DetectObjectsML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
